@@ -72,17 +72,9 @@ namespace Library_Index
         private void button1_Click(object sender, EventArgs e)
         {
             LinearSearch();
+            //BinarySearch();
             
         }
-      //  public void DisplayResults()
-       // {
-         //   outputLabel.Text = "";
-
-        //    foreach (Book b in Books)
-        //    {
-        //        outputLabel.Text += b.name + " " + b.index + "\n";
-         //   }
-      //  }
 
     }
 }
