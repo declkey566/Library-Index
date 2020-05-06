@@ -31,9 +31,17 @@ namespace Library_Index
                 Books.Add(b);
             }
         }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int searchValue = Convert.ToInt32(textBox1.Text);
+            LinearSearch();
+            //BinarySearch();
+            
+        }
         public void LinearSearch()
         {
-            int searchValue = Convert.ToInt32(textBox1.Text); 
             foreach (Book b in Books)
             {
                 if (b.index == searchValue)
@@ -44,20 +52,19 @@ namespace Library_Index
 
             }
         }
-        public void BinarySearch()
+         public void BinarySearch()
         {
             int low = 0;
             int high = Books.Count - 1;
-            int searchValueB = Convert.ToInt32(textBox1.Text);
             while (high >= low)
             {
                 int middle = (low + high) / 2;
 
-                if (Books[middle].index == searchValueB)
+                if (Books[middle].index == searchValue)
                 {
                     label3.Text = "test";
                 }
-                else if (Books[middle].index < searchValueB)
+                else if (Books[middle].index < searchValue)
                 {
                     low = middle + 1;
                 }
@@ -67,13 +74,6 @@ namespace Library_Index
 
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LinearSearch();
-            //BinarySearch();
-            
         }
 
     }
