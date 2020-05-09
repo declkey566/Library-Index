@@ -14,6 +14,7 @@ namespace Library_Index
     public partial class Form1 : Form
     {
         List<Book> Books = new List<Book>();
+       // List<Bcode> Codes = new List<Bcode>();
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,9 @@ namespace Library_Index
             {
                 string name = nameList[i + 1];
                 int index = Convert.ToInt32(nameList[i]);
+
+               //Bcode a = new Bcode(index);
+                //Codes.Add(a);
                 
                 Book b = new Book(name, index);
                 Books.Add(b);
@@ -35,12 +39,22 @@ namespace Library_Index
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int searchValue = Convert.ToInt32(textBox1.Text);
-            LinearSearch();
-            //BinarySearch();
-            
+            int index = Convert.ToInt32(textBox1.Text);
+           
+
+            //outputLabel.Text = found + "";
+            LinearSearch( index);
+            BinarySearch(Books, index);
+            //if (BinarySearch(Books, index) = false)
+           // {
+           //     MessageBox.Show("Not found");
+            //}
+           // else if (BinarySearch(Books, index)=true)
+          //  {
+           //     MessageBox.Show ("Found");
+           // }
         }
-        public void LinearSearch()
+        public void LinearSearch(int searchValue)
         {
             foreach (Book b in Books)
             {
@@ -52,29 +66,59 @@ namespace Library_Index
 
             }
         }
-         public void BinarySearch()
+        //  public void BinarySearch(int searchValue)
+        // {
+        //  int low = 0;
+        //  int high = Books.Count - 1;
+        //  while (high >= low)
+        //  {
+        //    int middle = (low + high) / 2;
+
+        //    if (Books[middle].index == searchValue)
+        //    {
+        //        label3.Text = "test";
+        //   }
+        //   else if (Books[middle].index < searchValue)
+        //  {
+        //       low = middle + 1;
+        //   }
+        //   else
+        ////    {
+        //        high = middle - 1;
+
+        //  }
+        //  }
+        // }
+        public Boolean BinarySearch(List<int> searchList, int searchValue)
         {
             int low = 0;
-            int high = Books.Count - 1;
+            int high = searchList.Count - 1;
+
             while (high >= low)
             {
                 int middle = (low + high) / 2;
 
-                if (Books[middle].index == searchValue)
+                if (searchList[middle] == searchValue)
                 {
-                    label3.Text = "test";
+                    return true;
                 }
-                else if (Books[middle].index < searchValue)
+                else if (searchList[middle] < searchValue)
                 {
                     low = middle + 1;
                 }
                 else
                 {
                     high = middle - 1;
-
                 }
             }
+            return false;
         }
+
+
+
+
+
+
 
     }
 }
