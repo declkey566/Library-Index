@@ -14,7 +14,8 @@ namespace Library_Index
     public partial class Form1 : Form
     {
         List<Book> Books = new List<Book>();
-       // List<Bcode> Codes = new List<Bcode>();
+        List<int> codes = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace Library_Index
                 string name = nameList[i + 1];
                 int index = Convert.ToInt32(nameList[i]);
 
+                codes.Add(index);
                //Bcode a = new Bcode(index);
                 //Codes.Add(a);
                 
@@ -40,19 +42,17 @@ namespace Library_Index
         private void button1_Click(object sender, EventArgs e)
         {
             int index = Convert.ToInt32(textBox1.Text);
-           
-
-            //outputLabel.Text = found + "";
             LinearSearch( index);
-            BinarySearch(Books, index);
-            //if (BinarySearch(Books, index) = false)
-           // {
-           //     MessageBox.Show("Not found");
-            //}
-           // else if (BinarySearch(Books, index)=true)
-          //  {
-           //     MessageBox.Show ("Found");
-           // }
+            BinarySearch(codes, index);
+            String found = BinarySearch(codes, index);
+            if (found.Equals ("Found"))
+                {
+                label3.Text ="BOOK NAME PLACEHOLDER";
+             }
+            if (found.Equals("Not found"))
+            {
+                label3 .Text ="NOT LOCATED";
+            }
         }
         public void LinearSearch(int searchValue)
         {
@@ -66,30 +66,7 @@ namespace Library_Index
 
             }
         }
-        //  public void BinarySearch(int searchValue)
-        // {
-        //  int low = 0;
-        //  int high = Books.Count - 1;
-        //  while (high >= low)
-        //  {
-        //    int middle = (low + high) / 2;
-
-        //    if (Books[middle].index == searchValue)
-        //    {
-        //        label3.Text = "test";
-        //   }
-        //   else if (Books[middle].index < searchValue)
-        //  {
-        //       low = middle + 1;
-        //   }
-        //   else
-        ////    {
-        //        high = middle - 1;
-
-        //  }
-        //  }
-        // }
-        public Boolean BinarySearch(List<int> searchList, int searchValue)
+        public String BinarySearch(List<int> searchList, int searchValue)
         {
             int low = 0;
             int high = searchList.Count - 1;
@@ -100,7 +77,8 @@ namespace Library_Index
 
                 if (searchList[middle] == searchValue)
                 {
-                    return true;
+                    return ("Found");
+                    
                 }
                 else if (searchList[middle] < searchValue)
                 {
@@ -111,7 +89,7 @@ namespace Library_Index
                     high = middle - 1;
                 }
             }
-            return false;
+            return ("Not found");
         }
 
 
