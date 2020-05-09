@@ -30,9 +30,7 @@ namespace Library_Index
                 int index = Convert.ToInt32(nameList[i]);
 
                 codes.Add(index);
-               //Bcode a = new Bcode(index);
-                //Codes.Add(a);
-                
+
                 Book b = new Book(name, index);
                 Books.Add(b);
             }
@@ -46,9 +44,9 @@ namespace Library_Index
             BinarySearch(codes, index);
             String found = BinarySearch(codes, index);
             if (found.Equals ("Found"))
-                {
-                label3.Text ="BOOK NAME PLACEHOLDER";
-             }
+            {
+                label3.Text =Convert.ToString(b.name);
+            }
             if (found.Equals("Not found"))
             {
                 label3 .Text ="NOT LOCATED";
