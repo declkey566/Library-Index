@@ -45,7 +45,7 @@ namespace Library_Index
             String found = BinarySearch(codes, index);
             if (found.Equals ("Found"))
             {
-                label3.Text =Convert.ToString(b.name);
+                label3.Text ="BOOK NAME PLACEHOLDER";
             }
             if (found.Equals("Not found"))
             {
