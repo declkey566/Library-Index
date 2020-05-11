@@ -46,6 +46,7 @@ namespace Library_Index
             if (found.Equals ("Found"))
             {
                 label3.Text ="BOOK NAME PLACEHOLDER";
+                
             }
             if (found.Equals("Not found"))
             {
@@ -75,7 +76,7 @@ namespace Library_Index
 
                 if (searchList[middle] == searchValue)
                 {
-                    return ("Found");
+                    //return (searchList[middle].name);
                     
                 }
                 else if (searchList[middle] < searchValue)
