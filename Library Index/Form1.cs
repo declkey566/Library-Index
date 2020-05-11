@@ -41,17 +41,19 @@ namespace Library_Index
         {
             int index = Convert.ToInt32(textBox1.Text);
             LinearSearch( index);
-            BinarySearch(codes, index);
-            String found = BinarySearch(codes, index);
-            if (found.Equals ("Found"))
+            BinarySearch(Books, index);
+            String found = BinarySearch(Books, index);
+            if (found ==("Empty"))
             {
-                label3.Text ="BOOK NAME PLACEHOLDER";
-                
+                MessageBox.Show("Not Found");
+                label3.Text = found;
+                outputLabel.Text = "Empty";
             }
-            if (found.Equals("Not found"))
+            else
             {
-                label3 .Text ="NOT LOCATED";
+                label3.Text = found;
             }
+
         }
         public void LinearSearch(int searchValue)
         {
@@ -64,8 +66,9 @@ namespace Library_Index
                 }
 
             }
+
         }
-        public String BinarySearch(List<int> searchList, int searchValue)
+        public String BinarySearch(List<Book> searchList, int searchValue)
         {
             int low = 0;
             int high = searchList.Count - 1;
@@ -74,12 +77,12 @@ namespace Library_Index
             {
                 int middle = (low + high) / 2;
 
-                if (searchList[middle] == searchValue)
+                if (searchList[middle].index == searchValue)
                 {
-                    //return (searchList[middle].name);
+                    return (searchList[middle].name);
                     
                 }
-                else if (searchList[middle] < searchValue)
+                else if (searchList[middle].index < searchValue)
                 {
                     low = middle + 1;
                 }
@@ -88,7 +91,7 @@ namespace Library_Index
                     high = middle - 1;
                 }
             }
-            return ("Not found");
+            return ("Empty");
         }
 
 
